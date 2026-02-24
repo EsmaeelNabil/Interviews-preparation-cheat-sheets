@@ -562,7 +562,8 @@ fun getUser(id: Int, cont: Continuation<User>): Any {
 
 ### PART E: sealed class vs sealed interface
 
-> [!TIP] `sealed class` = shared state + single parent; `sealed interface` = type union + multi-inheritance. Start with interface (more flexible).
+> [!TIP]
+> `sealed class` = shared state + single parent; `sealed interface` = type union + multi-inheritance. Start with interface (more flexible).
 
 `sealed class` for shared state · `sealed interface` for type unions · Mutually exclusive subtypes · Exhaustive when
 

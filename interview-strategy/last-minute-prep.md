@@ -6,7 +6,8 @@
 
 ### Core Topics (Memorize These)
 
-> [!IMPORTANT] **5 questions interviewers ALWAYS ask. Prepare 1-2 min answers.** Think out loud. Show reasoning.
+> [!IMPORTANT]
+> **5 questions interviewers ALWAYS ask. Prepare 1-2 min answers.** Think out loud. Show reasoning.
 
 **Night Before Checklist:**
 - [ ] Review architecture: MVVM/MVI + Repository + DI (1 min prep)

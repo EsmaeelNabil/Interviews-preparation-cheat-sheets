@@ -6,7 +6,8 @@
 
 ### API Level Checks
 
-> [!NOTE] **Check `Build.VERSION.SDK_INT >= Build.VERSION_CODES.API_LEVEL`.** Use AndroidX helpers (`ContextCompat`). Provide fallbacks for older APIs.
+> [!NOTE]
+> **Check `Build.VERSION.SDK_INT >= Build.VERSION_CODES.API_LEVEL`.** Use AndroidX helpers (`ContextCompat`). Provide fallbacks for older APIs.
 
 Backward compatibility · API level guards · Fallback patterns
 
@@ -29,7 +30,8 @@ if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PERMI
 
 ### Feature Detection Over Version Checks
 
-> [!TIP] Don't assume all API N+ devices have feature X. Use `PackageManager.hasSystemFeature()` to verify feature exists.
+> [!TIP]
+> Don't assume all API N+ devices have feature X. Use `PackageManager.hasSystemFeature()` to verify feature exists.
 
 Feature detection · More robust · Handles device variations
 

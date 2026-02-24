@@ -104,7 +104,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
 ### Token Sync & Management
 
-> [!TIP] On app startup, get current token via `FirebaseMessaging.getInstance().token`. Sync with backend. Listen for `onNewToken()` refreshes.
+> [!TIP]
+> On app startup, get current token via `FirebaseMessaging.getInstance().token`. Sync with backend. Listen for `onNewToken()` refreshes.
 
 Startup sync · onNewToken callbacks · Backend deduplication
 

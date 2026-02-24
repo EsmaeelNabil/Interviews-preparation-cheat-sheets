@@ -24,7 +24,8 @@ Edit the script and specify the filepath.
 ### Before/After Example
 ```
 BEFORE (172 chars):
-> [!TIP] suspend functions compile to state machines via CPS. The compiler transforms suspension points 
+> [!TIP]
+> suspend functions compile to state machines via CPS. The compiler transforms suspension points 
 > into labeled states, allowing one thread to manage 100K+ coroutines.
 
 AFTER (3 optimized lines):

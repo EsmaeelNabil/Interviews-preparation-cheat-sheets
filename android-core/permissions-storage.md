@@ -75,7 +75,8 @@ registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted
 
 ### Scoped Storage (API 30+)
 
-> [!TIP] Can't access shared `/sdcard/DCIM` directly. Use app-specific dirs (no permission) OR MediaStore + permission.
+> [!TIP]
+> Can't access shared `/sdcard/DCIM` directly. Use app-specific dirs (no permission) OR MediaStore + permission.
 
 App-specific: `getExternalFilesDir()` · MediaStore: `EXTERNAL_CONTENT_URI` · Permissions required · Query SAF for legacy
 

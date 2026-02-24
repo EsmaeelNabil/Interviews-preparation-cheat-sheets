@@ -77,7 +77,8 @@ Framework:
 
 ### Media3 (ExoPlayer) Basics
 
-> [!TIP] Create `ExoPlayer` → set `MediaItem` (URL or local file) → `prepare()` → `play()`. Always `release()` in `onDestroyView`.
+> [!TIP]
+> Create `ExoPlayer` → set `MediaItem` (URL or local file) → `prepare()` → `play()`. Always `release()` in `onDestroyView`.
 
 `ExoPlayer` · `MediaItem` · Lifecycle cleanup · Plays local + remote
 

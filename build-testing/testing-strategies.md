@@ -6,7 +6,8 @@
 
 ### ViewModel + Fake Repository
 
-> [!TIP] **Inject FakeRepository into ViewModel. Use `runTest` + `advanceUntilIdle()` for coroutines.** Assert state transitions.
+> [!TIP]
+> **Inject FakeRepository into ViewModel. Use `runTest` + `advanceUntilIdle()` for coroutines.** Assert state transitions.
 
 Unit tests · Fake dependencies · State assertions · runTest for coroutines
 
@@ -26,7 +27,8 @@ Unit tests · Fake dependencies · State assertions · runTest for coroutines
 
 ### Compose UI Testing
 
-> [!TIP] **Use `createComposeRule()`. `setContent {}` to render.** Find nodes by text/tag, perform actions, assert visibility.
+> [!TIP]
+> **Use `createComposeRule()`. `setContent {}` to render.** Find nodes by text/tag, perform actions, assert visibility.
 
 composeRule · Semantics tree · Assertions · No Android context needed
 
@@ -45,7 +47,8 @@ composeRule · Semantics tree · Assertions · No Android context needed
 
 ### Navigation Testing
 
-> [!TIP] Use `TestNavHostController`. Set up NavHost with test controller. Verify route after navigation clicks.
+> [!TIP]
+> Use `TestNavHostController`. Set up NavHost with test controller. Verify route after navigation clicks.
 
 TestNavHostController · Route verification · Compose navigation
 
@@ -69,7 +72,8 @@ TestNavHostController · Route verification · Compose navigation
 
 ### E2E Integration Testing
 
-> [!TIP] Launch activity with `ActivityScenarioRule`. Perform user flows (login → profile → edit). Assert UI state changes.
+> [!TIP]
+> Launch activity with `ActivityScenarioRule`. Perform user flows (login → profile → edit). Assert UI state changes.
 
 End-to-end · User flows · Espresso · Full app testing
 

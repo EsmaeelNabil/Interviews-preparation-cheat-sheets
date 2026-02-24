@@ -68,7 +68,8 @@ flowchart TB
 
 ### Migrations & Schema Evolution
 
-> [!WARNING] **Room migrations handle schema version bumps.**
+> [!WARNING]
+> **Room migrations handle schema version bumps.**
 > - Define `Migration(oldVersion, newVersion)` with SQL
 > - Always test migrations (data loss + crashes common if untested)
 > - Use `@Query @PrimaryKey` to catch schema mismatches at compile-time
@@ -404,7 +405,8 @@ suspend fun getUsersWithPostsBatch(): List<UserWithPosts>
 
 ### Transactions & Atomicity
 
-> [!TIP] `@Transaction` wraps multiple queries in SQLite transaction.
+> [!TIP]
+> `@Transaction` wraps multiple queries in SQLite transaction.
 > - All succeed or all fail
 > - Use for multi-step operations (insert user → insert posts)
 > - Atomicity prevents partial updates (user created, posts failed = data corruption)

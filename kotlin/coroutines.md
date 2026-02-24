@@ -121,7 +121,8 @@ The **thread is freed at label 0**. Scheduler uses it for other tasks. When API 
 
 ### Dispatchers — When & Why
 
-> [!IMPORTANT] **Dispatcher = thread pool scheduler.** Main = UI thread only. IO = 64 threads (elastic). Default = CPU cores. Choose based on work type.
+> [!IMPORTANT]
+> **Dispatcher = thread pool scheduler.** Main = UI thread only. IO = 64 threads (elastic). Default = CPU cores. Choose based on work type.
 
 `Main` UI-safe · `IO` for I/O · `Default` for CPU work · `Unconfined` testing only · `withContext()` to switch
 

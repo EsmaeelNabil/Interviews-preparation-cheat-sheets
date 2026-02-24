@@ -29,7 +29,8 @@ remoteConfig.fetchAndActivate().addOnCompleteListener { task ->
 
 ### Local Feature Flags (BuildConfig)
 
-> [!TIP] **Use `buildConfigField` to define compile-time flags (debug vs release).** Access via `BuildConfig.FEATURE_NAME`. Fast, no network calls.
+> [!TIP]
+> **Use `buildConfigField` to define compile-time flags (debug vs release).** Access via `BuildConfig.FEATURE_NAME`. Fast, no network calls.
 
 BuildConfig fields · Compile-time constants · Per-buildType configuration
 
@@ -58,7 +59,8 @@ if (BuildConfig.DEBUG_LOGGING) enableDebugLogging()
 
 ### A/B Testing Pattern
 
-> [!TIP] Hash userId + testName to consistently assign variant. Log to analytics. Compare metrics between control and variant.
+> [!TIP]
+> Hash userId + testName to consistently assign variant. Log to analytics. Compare metrics between control and variant.
 
 Deterministic assignment · Analytics tracking · Variant tracking
 

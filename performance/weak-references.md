@@ -21,7 +21,8 @@ Strong · Soft · Weak · GC reclamation rules
 
 ### WeakReference Pattern (Listener Registry)
 
-> [!TIP] **Store listeners in `WeakReference<T>`. Clean dead refs before publishing.** Listeners auto-removed when GC'd (no manual unsubscribe needed).
+> [!TIP]
+> **Store listeners in `WeakReference<T>`. Clean dead refs before publishing.** Listeners auto-removed when GC'd (no manual unsubscribe needed).
 
 WeakReference · Auto-cleanup · Listener registry · Memory safe
 
@@ -44,7 +45,8 @@ class EventBus {
 
 ### WeakHashMap for Caches
 
-> [!TIP] **`WeakHashMap<K, V>` removes entry when key is unreferenced.** Useful for caches tied to object lifetime (prevent keeping objects alive).
+> [!TIP]
+> **`WeakHashMap<K, V>` removes entry when key is unreferenced.** Useful for caches tied to object lifetime (prevent keeping objects alive).
 
 WeakHashMap · Key-based reclamation · Automatic cleanup
 

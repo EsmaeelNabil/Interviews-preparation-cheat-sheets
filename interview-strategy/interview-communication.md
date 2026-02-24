@@ -194,7 +194,9 @@ Spending 70% time on happy path maximizes the chance of showing #1 and #2.
 
 ### System Design Interview Structure
 
-> [!TIP] 5-step interview structure:
+> [!TIP]
+> **5-step interview structure:**
+>
 > 1. Clarify scope—ask about scale, offline, real-time, conflicts (2 min)
 > 2. Sketch architecture—Room + Repository + ViewModel (3 min)
 > 3. Deep dive critical paths—load failures, sync conflicts (7 min)
@@ -425,7 +427,8 @@ A: "I inject a fake Repository returning known values. Use runTest builder
 
 ### Reverse Questions to Ask
 
-> [!TIP] Ask questions that show thinking about trade-offs and culture fit.
+> [!TIP]
+> Ask questions that show thinking about trade-offs and culture fit.
 > - **Technical companies:** deep technical questions (modularization, offline strategy)
 > - **Product companies:** growth/shipping questions
 > - **Team:** "biggest challenge" signals you want to solve real problems, not just pass time

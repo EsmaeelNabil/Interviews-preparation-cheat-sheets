@@ -84,7 +84,8 @@ Maintenance window every ~9 hours (or on user unlock)
 
 ### Battery Drain Detection
 
-> [!TIP] Use `adb shell dumpsys batterystats` to profile drain. Check for partial wakelocks (held >1 sec = bad), high CPU time, network overhead.
+> [!TIP]
+> Use `adb shell dumpsys batterystats` to profile drain. Check for partial wakelocks (held >1 sec = bad), high CPU time, network overhead.
 
 dumpsys batterystats · Partial wakelocks · CPU profiling · Network analysis
 
