@@ -6,7 +6,9 @@
 
 ### Firebase Cloud Messaging Integration
 
-> **TL;DR:** Extend `FirebaseMessagingService` → override `onMessageReceived()` for data messages → override `onNewToken()` to sync token with backend. Register service + intent-filter in AndroidManifest.
+> [!IMPORTANT]
+> **Extend `FirebaseMessagingService` → override `onMessageReceived()` for data messages → override
+> `onNewToken()` to sync token with backend.** Register service + intent-filter in AndroidManifest.
 
 `FirebaseMessagingService` · Data vs Notification messages · Token refresh · PendingIntent for deep links
 
@@ -102,7 +104,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
 ### Token Sync & Management
 
-> **TL;DR:** On app startup, get current token via `FirebaseMessaging.getInstance().token`. Sync with backend. Listen for `onNewToken()` refreshes.
+> [!TIP] On app startup, get current token via `FirebaseMessaging.getInstance().token`. Sync with backend. Listen for `onNewToken()` refreshes.
 
 Startup sync · onNewToken callbacks · Backend deduplication
 

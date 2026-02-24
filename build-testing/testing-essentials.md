@@ -4,9 +4,35 @@
 
 ## 8. Testing Essentials (Staff Level)
 
+<details open>
+<summary><strong>🧪 Testing Pyramid Strategy</strong></summary>
+
+```mermaid
+flowchart TD
+    subgraph pyramid[" "]
+        E2E["🔺 E2E / UI Tests<br/>Espresso, Compose UI<br/>Slow · Few · Expensive"]
+        INT["🔷 Integration Tests<br/>Fake repos, in-memory DB<br/>Medium speed · Medium count"]
+        UNIT["🟩 Unit Tests<br/>JUnit5 + MockK + Turbine<br/>Fast · Many · Cheap"]
+    end
+    UNIT --> INT --> E2E
+
+    classDef level1 fill:#c8e6c9
+    classDef level2 fill:#90caf9
+    classDef level3 fill:#ffcc80
+    class UNIT level1
+    class INT level2
+    class E2E level3
+```
+
+</details>
+
+---
+
 ### Coroutine Testing
 
-> **TL;DR:** `runTest` with virtual clock auto-skips delays (no waiting). `StandardTestDispatcher` queues work. Use `Dispatchers.setMain()` for Main dispatcher. Turbine for Flow testing.
+> [!IMPORTANT]
+> **`runTest` with virtual clock auto-skips delays (no waiting). `StandardTestDispatcher` queues work.** Use
+> `Dispatchers.setMain()` for Main dispatcher. Turbine for Flow testing.
 
 `runTest` virtual time · `StandardTestDispatcher` queued · `advanceUntilIdle` control · `Dispatchers.setMain` · `Turbine` flow testing
 
@@ -184,7 +210,9 @@ fun searchFlow_emitsResults() = runTest {
 
 ### Compose Testing
 
-> **TL;DR:** Use `createComposeRule()` to test Compose UI on JVM. Find nodes by text/tag. Robolectric 4.16+ lets Compose tests run without emulator. Verify with assertions; simulate interactions with `performClick()`.
+> [!TIP]
+> Use `createComposeRule()` to test Compose UI on JVM. Find nodes by text/tag. Robolectric 4.16+ lets Compose
+> tests run without emulator. Verify with assertions; simulate interactions with `performClick()`.
 
 `createComposeRule()` · `onNodeWithText()` or `onNodeWithTag()` · Robolectric JVM rendering · `assertIsDisplayed()` · `performClick()`
 
@@ -318,7 +346,10 @@ fun animation_completes() = runTest {  // Shares scheduler with Compose
 
 ### Test Doubles: Fakes, Mocks, Stubs (Hierarchy)
 
-> **TL;DR:** Test Double replaces real dependency. Fakes are real logic (in-memory DB). Mocks verify interactions (was X called?). Stubs return hardcoded values. Use Fakes by default (fast, deterministic). Mock only for verification or when faking impractical.
+> [!TIP]
+> Test Double replaces real dependency. Fakes are real logic (in-memory DB). Mocks verify interactions (was X
+> called?). Stubs return hardcoded values. Use Fakes by default (fast, deterministic). Mock only for
+> verification or when faking impractical.
 
 Fake (real impl, simplified) · Mock (verify interactions) · Stub (hardcoded returns)
 

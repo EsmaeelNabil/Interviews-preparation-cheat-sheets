@@ -6,7 +6,9 @@
 
 ### Process Death vs. App Kill
 
-> **TL;DR:** **Process death** (OOM, system cleanup) = `onDestroy()` NOT called, SavedStateHandle restored. **App kill** (user force-stop) = all state lost, cold start. Must handle both.
+> [!CAUTION]
+> **Process death (OOM, system cleanup) = `onDestroy()` NOT called, SavedStateHandle restored.** App kill (user
+> force-stop) = all state lost, cold start. Must handle both.
 
 Process death · App kill · SavedStateHandle recovery · Singleton loss
 
@@ -20,7 +22,9 @@ Process death · App kill · SavedStateHandle recovery · Singleton loss
 
 ### Preventing ANR (Application Not Responding)
 
-> **TL;DR:** ANR = 5-second Main thread block. Move I/O + heavy compute to background thread. Use `viewModelScope.launch(Dispatchers.IO)` for network, `Dispatchers.Default` for CPU-heavy.
+> [!WARNING]
+> **ANR = 5-second Main thread block.** Move I/O + heavy compute to background thread. Use
+> `viewModelScope.launch(Dispatchers.IO)` for network, `Dispatchers.Default` for CPU-heavy.
 
 Main thread blocked → ANR dialog · 5-second threshold · Async required
 
@@ -78,7 +82,9 @@ viewModelScope.launch(Dispatchers.Default) {
 
 ### Measuring App Startup Time
 
-> **TL;DR:** **Cold start** = worst (closed → visible). **Warm start** = backgrounded → visible. **Hot start** = paused → resumed. Measure with Studio Profiler or `adb shell am start-profiling`.
+> [!TIP]
+> **Cold start** = worst (closed → visible). **Warm start** = backgrounded → visible. **Hot start** = paused →
+> resumed. Measure with Studio Profiler or `adb shell am start-profiling`.
 
 Cold/warm/hot start · Profiler tool · Macrobenchmark for CI
 
@@ -131,7 +137,10 @@ Application.onCreate() → Activity.onCreate/onStart/onResume → First frame
 
 ### View Hierarchy & Drawing (View vs. Compose)
 
-> **TL;DR:** **View:** onMeasure() → onLayout() → onDraw() + invalidate() for redraws. **ViewGroup:** measures/positions all children recursively. **Compose:** no hierarchy; recomposition → layout → GPU draw.
+> [!TIP]
+> **View:**
+> onMeasure() → onLayout() → onDraw() + invalidate() for redraws. **ViewGroup:** measures/positions all children
+> recursively. **Compose:** no hierarchy; recomposition → layout → GPU draw.
 
 Measure/layout/draw · invalidate() triggers redraw · ViewGroup recursion · Compose recomposition
 
@@ -189,7 +198,9 @@ ViewGroup.draw() {
 
 ### Configuration Changes
 
-> **TL;DR:** Orientation/locale/font scale change = Activity destroyed + recreated by default. **Solution:** Save in `SavedStateHandle` (auto-persists) OR set `android:configChanges` to skip recreation.
+> [!TIP]
+> Orientation/locale/font scale change = Activity destroyed + recreated by default. **Solution:** Save in
+> `SavedStateHandle` (auto-persists) OR set `android:configChanges` to skip recreation.
 
 Activity recreation · SavedStateHandle persistence · configChanges flag · ViewModel survival
 

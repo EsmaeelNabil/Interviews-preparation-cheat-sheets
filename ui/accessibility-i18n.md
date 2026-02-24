@@ -6,7 +6,9 @@
 
 ### Compose Accessibility
 
-> **TL;DR:** Use `.semantics { contentDescription = "..." }` for screen readers (TalkBack). Mark headings with `.semantics { heading() }`. Compose auto-handles text scaling & color contrast if using Material semantics.
+> [!IMPORTANT]
+> **Use `.semantics { contentDescription = "..." }` for screen readers (TalkBack).** Mark headings with
+> `.semantics { heading() }`. Compose auto-handles text scaling & color contrast if using Material semantics.
 
 Semantics tree · contentDescription · TalkBack testing · heading() marker
 
@@ -69,7 +71,9 @@ Box                │
 
 ### String Resources & Localization (i18n)
 
-> **TL;DR:** Create `res/values-<locale>/strings.xml` for each language (e.g., `values-es`, `values-fr`). Framework auto-selects based on device locale. For RTL (Arabic, Hebrew), set `android:supportsRtl="true"`.
+> [!TIP]
+> Create `res/values-<locale>/strings.xml` for each language (e.g., `values-es`, `values-fr`). Framework
+> auto-selects based on device locale. For RTL (Arabic, Hebrew), set `android:supportsRtl="true"`.
 
 Locale-specific resources · values-<locale> · RTL support · Plurals
 

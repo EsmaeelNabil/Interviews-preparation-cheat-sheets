@@ -4,9 +4,31 @@
 
 ## 26. RecyclerView Optimization
 
+<details open>
+<summary><strong>📱 RecyclerView Draw & Recycle Pipeline</strong></summary>
+
+```mermaid
+flowchart LR
+    Scroll["Scroll\ndetected"] --> Pool["Check ViewHolder\nRecycle Pool"]
+    Pool --> Empty{Pool\nempty?}
+    Empty -->|Yes| Create["onCreateViewHolder\n(expensive inflation)"]
+    Empty -->|No| Reuse["Reuse from pool"]
+    Create --> Bind["onBindViewHolder\n(set data, not inflate)"]
+    Reuse --> Bind
+    Bind --> Draw["Framework draws\non screen"]
+    Draw --> OffScreen["View scrolls\noff-screen"]
+    OffScreen --> ReturnPool["Return to pool\n(ready for recycle)"]
+```
+
+</details>
+
+---
+
 ### ViewHolder & Recycling Best Practices
 
-> **TL;DR:** Create ViewHolder in `onCreateViewHolder()` (inflation expensive). Bind data in `onBindViewHolder()` (called on recycle). Never inflate in bind—reuse views!
+> [!WARNING]
+> **Create ViewHolder in `onCreateViewHolder()` (inflation expensive).** Bind data in `onBindViewHolder()`
+> (called on recycle). Never inflate in bind—reuse views!
 
 Recycling pool · ViewHolder pattern · onCreateViewHolder efficiency · Avoid stale references
 
@@ -83,7 +105,9 @@ Image loads → Displays wrong image (stale URL)
 
 ### DiffUtil for Efficient List Updates
 
-> **TL;DR:** Extend `DiffUtil.ItemCallback<T>` with `areItemsTheSame()` + `areContentsTheSame()`. Use `ListAdapter.submitList()` to compute diff and update only changed items.
+> [!TIP]
+> Extend `DiffUtil.ItemCallback<T>` with `areItemsTheSame()` + `areContentsTheSame()`. Use
+> `ListAdapter.submitList()` to compute diff and update only changed items.
 
 DiffUtil algorithm · ListAdapter · O(n) cost · Minimal UI updates
 

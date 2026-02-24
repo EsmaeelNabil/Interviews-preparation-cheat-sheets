@@ -6,7 +6,9 @@
 
 ### ViewBinding (Type-Safe Views)
 
-> **TL;DR:** Enable `viewBinding true` in build.gradle. Use generated `Binding` classes instead of `findViewById()`. Type-safe, null-safe, no reflection.
+> [!TIP]
+> **Enable `viewBinding true` in build.gradle.** Use generated `Binding` classes instead of `findViewById()`.
+> Type-safe, null-safe, no reflection.
 
 Type-safe · Null-safe · Compile-time checking · No reflection
 
@@ -41,7 +43,9 @@ class MyFragment : Fragment() {
 
 ### Data Binding (Two-Way Binding)
 
-> **TL;DR:** Use `<data>` block in layout XML to bind variables + event handlers. Automatic UI updates when ViewModel data changes. Two-way binding with `@={...}`.
+> [!TIP]
+> Use `<data>` block in layout XML to bind variables + event handlers. Automatic UI updates when ViewModel data
+> changes. Two-way binding with `@={...}`.
 
 Data binding expressions · Event handlers · Two-way binding · Declarative UI
 

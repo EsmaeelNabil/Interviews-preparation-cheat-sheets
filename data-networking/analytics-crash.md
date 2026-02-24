@@ -6,7 +6,9 @@
 
 ### Firebase Analytics Integration
 
-> **TL;DR:** Initialize `FirebaseAnalytics.getInstance()` → log events with `logEvent(eventName, Bundle)`. Use predefined event constants for standard events (SIGN_UP, PURCHASE). Bundle contains parameters.
+> [!TIP]
+> **Initialize `FirebaseAnalytics.getInstance()` → log events with `logEvent(eventName, Bundle)`.** Use
+> predefined event constants for standard events (SIGN_UP, PURCHASE). Bundle contains parameters.
 
 Event logging · Predefined events · Bundle parameters · Standard vs. custom
 
@@ -58,7 +60,9 @@ analytics.logEvent(FirebaseAnalytics.Event.PURCHASE, Bundle().apply {
 
 ### Crash Reporting (Firebase Crashlytics)
 
-> **TL;DR:** Call `FirebaseCrashlytics.getInstance().recordException(exception)` to log crashes. Use `.setCustomKey()` for context, `.setUserId()` for user identification. Crashes auto-reported if unhandled.
+> [!TIP]
+> Call `FirebaseCrashlytics.getInstance().recordException(exception)` to log crashes. Use `.setCustomKey()` for
+> context, `.setUserId()` for user identification. Crashes auto-reported if unhandled.
 
 Uncaught exceptions auto-logged · recordException() for caught · Custom keys · User tracking
 

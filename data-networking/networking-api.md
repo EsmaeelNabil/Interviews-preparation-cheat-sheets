@@ -4,9 +4,39 @@
 
 ## 13. Networking & API Design
 
+<details open>
+<summary><strong>📡 Retrofit Request Lifecycle</strong></summary>
+
+```mermaid
+sequenceDiagram
+    participant App
+    participant Retrofit
+    participant Interceptor
+    participant Network as HTTP Network
+    participant Server
+
+    App->>Retrofit: execute(call)
+    Retrofit->>Interceptor: onRequest()
+    Interceptor->>Interceptor: Add auth, headers
+    Interceptor->>Network: Send HTTP request
+    Network->>Server: TCP handshake
+    Server->>Server: Process request
+    Server->>Network: HTTP response
+    Network->>Interceptor: onResponse()
+    Interceptor->>Interceptor: Log, transform
+    Retrofit->>Retrofit: Deserialize JSON
+    Retrofit->>App: return Response<T>
+```
+
+</details>
+
+---
+
 ### RESTful API Best Practices for Android
 
-> **TL;DR:** Design APIs resource-oriented (`/users/123`), not RPC-style (`/getUser?id=123`). Use DTOs to map API responses, separate from domain models. Stateless + idempotent design enables safe retries.
+> [!IMPORTANT]
+> **Design APIs resource-oriented (`/users/123`), not RPC-style (`/getUser?id=123`).** Use DTOs to map API
+> responses, separate from domain models. Stateless + idempotent design enables safe retries.
 
 REST principles · DTO ↔ Domain mapping · Stateless · Idempotent · Safe retries
 
@@ -138,7 +168,9 @@ POST /transfer with header: Idempotency-Key: abc123
 
 ### Error Handling in Networking
 
-> **TL;DR:** Use sealed interface (`ApiResult`) to represent Success/Failure/NetworkError. Distinguish network errors (retry) from HTTP errors (don't retry 4xx). Repository handles mapping; ViewModel observes result type.
+> [!TIP]
+> Use sealed interface (`ApiResult`) to represent Success/Failure/NetworkError. Distinguish network errors
+> (retry) from HTTP errors (don't retry 4xx). Repository handles mapping; ViewModel observes result type.
 
 Sealed interface · Network vs HTTP error · Retry strategy · Repository responsibility · Type-safe
 
@@ -304,7 +336,9 @@ when (val result = repo.getUser(123)) {
 
 ### Retry Strategy (Exponential Backoff)
 
-> **TL;DR:** Exponential backoff = wait 100ms, 200ms, 400ms between retries (doubles each time). Prevents thundering herd when server recovers. Retry only network errors & 5xx; never 4xx. Max 3 retries (diminishing returns).
+> [!TIP]
+> Exponential backoff = wait 100ms, 200ms, 400ms between retries (doubles each time). Prevents thundering herd
+> when server recovers. Retry only network errors & 5xx; never 4xx. Max 3 retries (diminishing returns).
 
 Exponential backoff · Jitter · Retry budget · Circuit breaker · Idempotent operations only
 
@@ -439,7 +473,9 @@ delay(delay + jitter)  // Spread out retries
 
 ### Connection Pooling & Keep-Alive
 
-> **TL;DR:** Reuse TCP connections (keep-alive) instead of opening new ones. OkHttp pools connections automatically. Keep 5 idle connections, TTL 5 min. Timeout: 30s for connect/read/write. Reduces latency by 100-500ms per request.
+> [!TIP]
+> Reuse TCP connections (keep-alive) instead of opening new ones. OkHttp pools connections automatically. Keep 5
+> idle connections, TTL 5 min. Timeout: 30s for connect/read/write. Reduces latency by 100-500ms per request.
 
 Connection pooling · Keep-alive · TCP reuse · Timeout tuning · Idle connection cleanup
 

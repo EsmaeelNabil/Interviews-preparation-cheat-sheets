@@ -4,9 +4,38 @@
 
 ## 29. Battery Optimization & Doze Mode
 
+<details open>
+<summary><strong>⚡ Doze Mode State Machine</strong></summary>
+
+```mermaid
+stateDiagram-v2
+    [*] --> Active : screen on
+    Active --> DozePending : screen off
+    DozePending --> Doze : no motion 30min
+    Doze --> Maintenance : every ~9 hours\nor user unlock
+    Maintenance --> Doze : maintenance done
+    Doze --> Active : user unlock or\nmotion detected
+    note right of Doze
+        Alarms deferred
+        Network suspended
+        Wakelocks ignored
+    end note
+    note right of Maintenance
+        Jobs run
+        Network allowed
+        Wakelocks honored
+    end note
+```
+
+</details>
+
+---
+
 ### Doze Mode Behavior (API 21+)
 
-> **TL;DR:** Doze mode (device idle, screen off) defers alarms, stops network, disables wakelocks. Use `WorkManager` for background work. Avoid `setAndAllowWhileIdle()` (throttled if overused).
+> [!CAUTION]
+> **Doze mode (device idle, screen off) defers alarms, stops network, disables wakelocks.** Use `WorkManager`
+> for background work. Avoid `setAndAllowWhileIdle()` (throttled if overused).
 
 Doze · Maintenance windows · WorkManager vs. AlarmManager · Wakelocks
 
@@ -55,7 +84,7 @@ Maintenance window every ~9 hours (or on user unlock)
 
 ### Battery Drain Detection
 
-> **TL;DR:** Use `adb shell dumpsys batterystats` to profile drain. Check for partial wakelocks (held >1 sec = bad), high CPU time, network overhead.
+> [!TIP] Use `adb shell dumpsys batterystats` to profile drain. Check for partial wakelocks (held >1 sec = bad), high CPU time, network overhead.
 
 dumpsys batterystats · Partial wakelocks · CPU profiling · Network analysis
 

@@ -2,7 +2,9 @@
 
 [← Back to main index](../README.md)
 
-> [!IMPORTANT] **Your technical knowledge means nothing if you can't communicate it.** System design, live coding, and communication skills are what hiring managers evaluate. Use this folder as your interview battle plan.
+> [!IMPORTANT]
+> **Your technical knowledge means nothing if you can't communicate it.** System design, live coding, and
+> communication skills are what hiring managers evaluate. Use this folder as your interview battle plan.
 
 ---
 

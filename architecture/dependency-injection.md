@@ -4,9 +4,36 @@
 
 ## 5. Dependency Injection (DI)
 
+<details open>
+<summary><strong>🏛️ Hilt Component Hierarchy</strong></summary>
+
+```mermaid
+flowchart TD
+    App["ApplicationComponent\n@Singleton scope\n(lives for app lifetime)"]
+
+    App --> Activity["ActivityComponent\n@ActivityScoped\n(lives for activity lifetime)"]
+    App --> Service["ServiceComponent\n@ServiceScoped"]
+
+    Activity --> Fragment["FragmentComponent\n@FragmentScoped\n(lives for fragment lifetime)"]
+    Fragment --> ChildFrag["ChildFragmentComponent\n(nested fragments)"]
+
+    Activity --> ViewModel["ViewModelComponent\n@ViewModelScoped\n(lives for viewmodel lifetime)"]
+
+    style App fill:#ff9999
+    style Activity fill:#99ccff
+    style Fragment fill:#99ff99
+    style Service fill:#ffcc99
+```
+
+</details>
+
+---
+
 ### Hilt vs Dagger vs Koin
 
-> **TL;DR:** Hilt = Android standard (codegen). Dagger = legacy (complex). Koin = KMP-friendly (runtime reflection). For 2026: Hilt if Android-only, Koin if KMP, kotlin-inject if lightweight.
+> [!TIP]
+> **Hilt = Android standard (codegen). Dagger = legacy (complex). Koin = KMP-friendly (runtime reflection).**
+> For 2026: Hilt if Android-only, Koin if KMP, kotlin-inject if lightweight.
 
 `Hilt` standard · `Dagger` legacy · `Koin` KMP · `Codegen vs runtime` · `Compile-safety vs flexibility`
 
@@ -163,7 +190,9 @@ factory { UserRepository(get()) }  // ❌ If OkHttpClient not registered, error 
 
 ### Hilt Component Hierarchy
 
-> **TL;DR:** Component = Dagger component scoped to Android lifetime (Application, Activity, Fragment, ViewModel). Hierarchy determines when bindings are created/destroyed.
+> [!TIP]
+> Component = Dagger component scoped to Android lifetime (Application, Activity, Fragment, ViewModel).
+> Hierarchy determines when bindings are created/destroyed.
 
 `SingletonComponent` app-life · `ViewModelComponent` screen-life · `ActivityComponent` activity-life · `Scoped binding` · `Lifetime management`
 
@@ -277,7 +306,9 @@ fun provideRepo(db: Database): UserRepository = UserRepositoryImpl(db)
 
 ### Hilt Modules: @Provides vs @Binds
 
-> **TL;DR:** `@Provides` = factory function (custom logic). `@Binds` = simple wrapper (impl to interface). Use Binds when no logic needed (less generated code).
+> [!TIP]
+> `@Provides` = factory function (custom logic). `@Binds` = simple wrapper (impl to interface). Use Binds when
+> no logic needed (less generated code).
 
 `@Provides` factory · `@Binds` wrapper · `Abstract modules` · `Code generation` · `When each`
 
@@ -469,7 +500,9 @@ class MyApp : Application() {
 
 ### Manual DI — Constructor Injection without Framework
 
-> **TL;DR:** Hand-written AppContainer with constructor injection. No codegen overhead, fully transparent. Scales to ~50 classes comfortably; beyond that, framework (Hilt/Koin) helps. Best for KMP shared code.
+> [!TIP]
+> Hand-written AppContainer with constructor injection. No codegen overhead, fully transparent. Scales to ~50
+> classes comfortably; beyond that, framework (Hilt/Koin) helps. Best for KMP shared code.
 
 `Constructor injection` · `AppContainer` · `Zero magic` · `Fully KMP` · `Simple, scales ~50 classes`
 

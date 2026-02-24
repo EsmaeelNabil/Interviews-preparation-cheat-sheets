@@ -2,7 +2,9 @@
 
 [← Back to main index](../README.md)
 
-> [!IMPORTANT] **Design patterns and DI separate senior engineers from juniors.** This is where you demonstrate system thinking in interviews. Interview frequency: **CRITICAL**.
+> [!IMPORTANT]
+> **Design patterns and DI separate senior engineers from juniors.** This is where you demonstrate system
+> thinking in interviews. Interview frequency: **CRITICAL**.
 
 ---
 

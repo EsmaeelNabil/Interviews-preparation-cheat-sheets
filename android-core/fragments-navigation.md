@@ -4,9 +4,42 @@
 
 ## 19. Fragments & Navigation
 
+<details open>
+<summary><strong>🔄 Fragment Lifecycle & Back Stack</strong></summary>
+
+```mermaid
+stateDiagram-v2
+    [*] --> Created : onCreate()
+    Created --> CreateView : onCreateView()
+    CreateView --> ViewCreated : onViewCreated()
+    ViewCreated --> Started : onStart()
+    Started --> Resumed : onResume()
+    Resumed --> Paused : onPause()
+    Paused --> Resumed : fragment visible again
+    Paused --> Stopped : onStop()
+    Stopped --> Started : fragment visible again\nor from back stack
+    Stopped --> DestroyView : onDestroyView()
+    DestroyView --> Destroyed : onDestroy()
+    Destroyed --> [*]
+    note right of Stopped
+        Not guaranteed if process death
+        Use SavedStateHandle!
+    end note
+    note right of DestroyView
+        View references invalid
+        Unregister listeners here
+    end note
+```
+
+</details>
+
+---
+
 ### Fragment Lifecycle (Common Pitfalls)
 
-> **TL;DR:** `onCreate` → `onCreateView` → `onViewCreated` → `onStart` → `onResume`. **Key gotcha:** `onStop()` NOT guaranteed on process death—use `SavedStateHandle` for persistence.
+> [!WARNING]
+> **`onCreate` → `onCreateView` → `onViewCreated` → `onStart` → `onResume`.** KEY GOTCHA: `onStop()` NOT
+> guaranteed on process death—use `SavedStateHandle` for persistence.
 
 Only guaranteed if fragment visible · View access timeline matters · Process death edge case
 
@@ -63,7 +96,9 @@ count.observe(this) { /* restored value */ }
 
 ### Shared ViewModel Between Fragments
 
-> **TL;DR:** Use `activityViewModels()` to get ViewModel scoped to Activity lifetime. Survives Fragment replacement. Both fragments read/write same state.
+> [!TIP]
+> Use `activityViewModels()` to get ViewModel scoped to Activity lifetime. Survives Fragment replacement. Both
+> fragments read/write same state.
 
 `activityViewModels()` · StateFlow for state · Activity-scoped lifetime
 
@@ -135,7 +170,9 @@ Fragment B created → activityViewModels() retrieves SAME instance from same Vi
 
 ### Back Stack Management
 
-> **TL;DR:** `navigate()` adds to back stack (default). `popUpTo()` pops previous entries. `popBackStack()` returns false if no stack left → finish activity.
+> [!TIP]
+> `navigate()` adds to back stack (default). `popUpTo()` pops previous entries. `popBackStack()` returns false
+> if no stack left → finish activity.
 
 `navController.navigate()` · `popUpTo()` · `inclusive` flag · Check return value
 

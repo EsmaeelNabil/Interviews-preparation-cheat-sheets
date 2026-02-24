@@ -6,7 +6,9 @@
 
 ### Module Structure (Large Teams)
 
-> **TL;DR:** Split app into **feature modules** (auth, home) + **core modules** (network, database, ui). Dependency flow: `feature` → `core`, never `feature` → `feature`. Use DI to decouple.
+> [!TIP]
+> **Split app into feature modules (auth, home) + core modules (network, database, ui).** Dependency flow:
+> `feature` → `core`, never `feature` → `feature`. Use DI to decouple.
 
 Multi-module structure · Dependency graph · Core shared layers · Feature isolation
 
@@ -69,7 +71,9 @@ dependencies {
 
 ### Documentation Patterns
 
-> **TL;DR:** Write ADR (Architecture Decision Records) for major choices. Add KDoc with `@param`, `@throws`, `@return` for public APIs. Include examples in docstrings.
+> [!TIP]
+> Write ADR (Architecture Decision Records) for major choices. Add KDoc with `@param`, `@throws`, `@return` for
+> public APIs. Include examples in docstrings.
 
 KDoc · ADR · Examples · Consequences
 

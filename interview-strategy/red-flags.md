@@ -6,7 +6,9 @@
 
 ### Anti-Patterns (Instant Fails)
 
-> **TL;DR:** GlobalScope = memory leak. Mutable objects exposed = state bugs. Blocking calls = ANR. Hardcoded credentials = security. Context leaks = memory. Interviewers test these immediately.
+> [!CAUTION]
+> **GlobalScope = memory leak. Mutable objects exposed = state bugs. Blocking calls = ANR. Hardcoded credentials
+> = security.** Context leaks = memory. Interviewers test these immediately.
 
 Red flags · Memory safety · Concurrency · Security
 

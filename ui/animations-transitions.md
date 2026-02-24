@@ -4,9 +4,33 @@
 
 ## 28. Animations & Transitions
 
+<details open>
+<summary><strong>🎬 Animation Type Decision Tree</strong></summary>
+
+```mermaid
+flowchart TD
+    Q{Animation\ntype?} --> PropChange["Property change\n(size, color, position)"]
+    Q --> StateNav["State-driven\nUI change"]
+    Q --> Gesture["Gesture-responsive\n(fling, drag)"]
+
+    PropChange --> Android["View system\n(ValueAnimator\nor ObjectAnimator)"]
+    StateNav --> Compose["Compose\n(animateDpAsState)"]
+    Gesture --> Physics["Physics-based\n(spring, fling)"]
+
+    Android --> Callback["Listener on\neach frame"]
+    Compose --> Observe["Observes state\ncontinuously"]
+    Physics --> Velocity["Momentum calculus"]
+```
+
+</details>
+
+---
+
 ### Property Animation (ValueAnimator)
 
-> **TL;DR:** `ValueAnimator.ofInt/Float()` animates from start to end over duration with interpolator. `addUpdateListener()` updates view per frame. Manual `requestLayout()` for layout changes.
+> [!TIP]
+> **`ValueAnimator.ofInt/Float()` animates from start to end over duration with interpolator.**
+> `addUpdateListener()` updates view per frame. Manual `requestLayout()` for layout changes.
 
 ValueAnimator · Interpolators · Update listeners · 60fps driven
 
@@ -54,7 +78,9 @@ animator.start()
 
 ### Compose Animations
 
-> **TL;DR:** `animateDpAsState()` observes state, animates to target value. Use `spring()`, `tween()`, or `keyframes()` specs. For multiple properties, use `updateTransition()` (keeps animations in sync).
+> [!TIP]
+> **`animateDpAsState()` observes state, animates to target value.** Use `spring()`, `tween()`, or `keyframes()`
+> specs. For multiple properties, use `updateTransition()` (keeps animations in sync).
 
 animateDpAsState · Specs (spring, tween) · updateTransition · State-driven
 

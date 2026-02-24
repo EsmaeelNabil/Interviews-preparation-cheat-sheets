@@ -472,7 +472,9 @@ inline fun launchAsync(crossinline block: suspend () -> Unit) {
 
 ### PART D: Coroutine Internals — How `suspend` Works (CPS Deep Dive)
 
-> **TL;DR:** `suspend` functions compile to state machines via Continuation-Passing Style (CPS). The compiler transforms suspension points into labeled states, allowing one thread to manage 100K+ coroutines.
+> [!TIP]
+> `suspend` functions compile to state machines via Continuation-Passing Style (CPS). The compiler transforms
+> suspension points into labeled states, allowing one thread to manage 100K+ coroutines.
 
 `suspend keyword` · `Continuation<T>` callback · `State machine` · `No OS threads` · `Yields, not blocks`
 
@@ -560,7 +562,7 @@ fun getUser(id: Int, cont: Continuation<User>): Any {
 
 ### PART E: sealed class vs sealed interface
 
-> **TL;DR:** `sealed class` = shared state + single parent; `sealed interface` = type union + multi-inheritance. Start with interface (more flexible).
+> [!TIP] `sealed class` = shared state + single parent; `sealed interface` = type union + multi-inheritance. Start with interface (more flexible).
 
 `sealed class` for shared state · `sealed interface` for type unions · Mutually exclusive subtypes · Exhaustive when
 
@@ -656,7 +658,9 @@ class CustomItem(val id: Int) : Loadable
 
 ### PART F: inline class (Value Class)
 
-> **TL;DR:** `@JvmInline value class` = compile-time type-safe wrapper, erased at runtime. Zero allocation when passed directly; boxed only when stored in containers or interface returns.
+> [!TIP]
+> `@JvmInline value class` = compile-time type-safe wrapper, erased at runtime. Zero allocation when passed
+> directly; boxed only when stored in containers or interface returns.
 
 `Type-safe IDs` · `No object allocation` · `Erased at runtime` · `Boxing in some contexts`
 
@@ -761,7 +765,9 @@ data class UserId(val value: Int)  // Every use allocates object
 
 ### PART G: Flow Operators — When to Use
 
-> **TL;DR:** Flow operators transform/combine streams. Each choice reflects a design decision: serial vs parallel, buffer vs backpressure, cancellation vs completion.
+> [!TIP]
+> Flow operators transform/combine streams. Each choice reflects a design decision: serial vs parallel, buffer
+> vs backpressure, cancellation vs completion.
 
 `flatMapConcat` serial · `flatMapMerge` parallel · `flatMapLatest` cancels · `debounce` + `throttle` rate-limit
 

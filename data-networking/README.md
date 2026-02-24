@@ -2,7 +2,9 @@
 
 [← Back to main index](../README.md)
 
-> [!WARNING] **Data layer design is where most bugs hide.** Security (SSL/TLS, authentication), database transactions, and async patterns separate careful engineers from careless ones. Interview frequency: **CRITICAL**.
+> [!WARNING]
+> **Data layer design is where most bugs hide.** Security (SSL/TLS, authentication), database transactions, and
+> async patterns separate careful engineers from careless ones. Interview frequency: **CRITICAL**.
 
 ---
 

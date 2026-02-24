@@ -4,9 +4,31 @@
 
 ## 11. Gradle & Build Tooling
 
+<details open>
+<summary><strong>🔨 Gradle Build Phases</strong></summary>
+
+```mermaid
+flowchart LR
+    Init["1️⃣ Initialization<br/>settings.gradle found<br/>Projects discovered"]
+    Config["2️⃣ Configuration<br/>build.gradle executed<br/>Tasks created<br/>Dependency graph resolved"]
+    Exec["3️⃣ Execution<br/>Requested tasks run<br/>Outputs generated<br/>APK/AAB created"]
+
+    Init --> Config
+    Config --> Exec
+
+    classDef phase fill:#e1f5ff,stroke:#01579b,stroke-width:2px
+    class Init,Config,Exec phase
+```
+
+</details>
+
+---
+
 ### Kotlin DSL vs Groovy
 
-> **TL;DR:** Kotlin DSL (`.kts`) = type-safe, IDE support, modern. Groovy (`.gradle`) = dynamic, legacy. Use Kotlin DSL for new projects (AGP 9+ default). Groovy works but not recommended.
+> [!TIP]
+> **Kotlin DSL (`.kts`) = type-safe, IDE support, modern. Groovy (`.gradle`) = dynamic, legacy.** Use Kotlin DSL
+> for new projects (AGP 9+ default). Groovy works but not recommended.
 
 `Kotlin DSL` type-safe · `Groovy` dynamic · `IDE autocomplete` · `Convention plugins` · `AGP 9+ default`
 
@@ -170,7 +192,9 @@ plugins {
 
 ### Version Catalogs
 
-> **TL;DR:** `gradle/libs.versions.toml` centralizes all versions and dependencies. Single source of truth. Gradle generates type-safe `libs.*` accessors. AGP 9+ default.
+> [!TIP]
+> `gradle/libs.versions.toml` centralizes all versions and dependencies. Single source of truth. Gradle
+> generates type-safe `libs.*` accessors. AGP 9+ default.
 
 `TOML format` · `Centralized versions` · `Type-safe accessors` · `No string magic` · `Easy updates`
 
@@ -344,7 +368,9 @@ dependencies {
 
 ### Build Types vs. Product Flavors
 
-> **TL;DR:** Build Types = *how* to build (debug/release, minify, signing). Product Flavors = *what* to build (free/premium, dev/prod, regions). Flavors × Build Types = all variants (e.g., `freeDebug`, `premiumRelease`).
+> [!TIP]
+> Build Types = *how* to build (debug/release, minify, signing). Product Flavors = *what* to build
+> (free/premium, dev/prod, regions). Flavors × Build Types = all variants (e.g., `freeDebug`, `premiumRelease`).
 
 Build Type (debug/release) · Flavor (free/premium) · Variant (dimension) · `applicationIdSuffix` · `buildConfigField`
 
@@ -498,7 +524,10 @@ Gradle merges: free variant uses free/strings.xml, premium uses premium/strings.
 
 ### Dependency Resolution & Conflicts
 
-> **TL;DR:** Dependency conflicts occur when transitive deps want different versions. Gradle defaults to *highest version*. Fix via: force strategy, BOM (preferred), or exclude transitive. BOM is safest (Google Firebase, AndroidX patterns use it).
+> [!TIP]
+> Dependency conflicts occur when transitive deps want different versions. Gradle defaults to *highest version*.
+> Fix via: force strategy, BOM (preferred), or exclude transitive. BOM is safest (Google Firebase, AndroidX
+> patterns use it).
 
 Transitive dependencies · Highest version strategy · `force()` · `exclude()` · BOM (Bill of Materials)
 

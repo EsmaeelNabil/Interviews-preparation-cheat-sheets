@@ -6,7 +6,9 @@
 
 ### Critical Warnings to Fix
 
-> **TL;DR:** MissingPermission, UnreachableCode, MissingSuperCall = errors (fix immediately). RecyclerView handlers, NotFragmentAttached = warnings (fix most cases). Suppress only as last resort.
+> [!WARNING]
+> **MissingPermission, UnreachableCode, MissingSuperCall = errors (fix immediately).** RecyclerView handlers,
+> NotFragmentAttached = warnings (fix most cases). Suppress only as last resort.
 
 Lint analysis · Common errors · Suppression via @Suppress
 

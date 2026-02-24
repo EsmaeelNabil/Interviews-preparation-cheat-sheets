@@ -4,9 +4,30 @@
 
 ## 16. Jetpack Compose Advanced Patterns
 
+<details open>
+<summary><strong>🔄 Recomposition & Recomposition Scope</strong></summary>
+
+```mermaid
+flowchart TD
+    State["State Change"] --> Lambda["Lambda captures\ncomposable"]
+    Lambda --> Recomp["Recomposition scope\nfrom slot table"]
+    Recomp --> Skip{Is function\nparameters\nsame?}
+    Skip -->|Yes| SkipRecomp["Skip entire subtree"]
+    Skip -->|No| Exec["Execute composable\nwith new parameters"]
+    Exec --> Children["Recompose children\n(recursively)"]
+    SkipRecomp --> End["✅ Optimized\n(no jank)"]
+    Children --> End
+```
+
+</details>
+
+---
+
 ### Modifiers & Custom Layout
 
-> **TL;DR:** Modifier order matters — applied *right to left* (last = outermost). Use `composed {}` for stateful modifiers. `CustomLayout` for manual measurements (LayoutModifier internals).
+> [!TIP]
+> **Modifier order matters — applied *right to left* (last = outermost).** Use `composed {}` for stateful
+> modifiers. `CustomLayout` for manual measurements (LayoutModifier internals).
 
 Modifier chain · Composed modifier · CustomLayout · Measurement/Placement · Layout inspection
 
@@ -143,7 +164,9 @@ fun Modifier.shimmer() = composed {  // Lambda creates new modifier per use
 
 ### Compose Effects: LaunchedEffect, DisposableEffect, SideEffect
 
-> **TL;DR:** LaunchedEffect for async work (coroutines). DisposableEffect for listeners (with cleanup). SideEffect for side effects after recomposition. Choose based on lifecycle + cleanup needs.
+> [!TIP]
+> LaunchedEffect for async work (coroutines). DisposableEffect for listeners (with cleanup). SideEffect for side
+> effects after recomposition. Choose based on lifecycle + cleanup needs.
 
 `LaunchedEffect` async · `DisposableEffect` cleanup · `SideEffect` post-recompose · `Key-driven` · `Cancellation safety`
 
@@ -304,7 +327,9 @@ fun Counter(count: Int) {
 
 ### Snapshotting State & Stability Tricks
 
-> **TL;DR:** Snapshot system captures state at recomposition. Immutable data prevents unnecessary recompositions (Stability = Compose can skip recomposition if args didn't change). Use `@Stable` or immutable collections to optimize.
+> [!TIP]
+> Snapshot system captures state at recomposition. Immutable data prevents unnecessary recompositions (Stability
+> = Compose can skip recomposition if args didn't change). Use `@Stable` or immutable collections to optimize.
 
 Snapshot isolation · Stability · `@Stable` annotation · Immutable collections · Recomposition skipping
 

@@ -4,9 +4,43 @@
 
 ## 7. Android Components & Lifecycles
 
+<details open>
+<summary><strong>🔄 Activity Lifecycle State Machine</strong></summary>
+
+```mermaid
+stateDiagram-v2
+    [*] --> Created : onCreate()
+    Created --> Started : onStart()
+    Started --> Resumed : onResume()
+    Resumed --> Paused : onPause()
+    Paused --> Resumed : user returns
+    Paused --> Stopped : onStop()
+    Stopped --> Started : user navigates back
+    Stopped --> Destroyed : onDestroy()
+    Destroyed --> [*]
+    note right of Resumed
+        Foreground
+        User interacting
+    end note
+    note right of Paused
+        Partial visibility
+        (dialog/new activity)
+    end note
+    note right of Stopped
+        Not visible
+        Process may be killed
+    end note
+```
+
+</details>
+
+---
+
 ### Services vs WorkManager
 
-> **TL;DR:** Foreground Service = user-visible (music, GPS, call). WorkManager = background tasks with system guarantees (sync, upload). Rule: User sees it now → FGS; everything else → WorkManager.
+> [!IMPORTANT]
+> **Foreground Service = user-visible (music, GPS, call). WorkManager = background tasks with system guarantees
+> (sync, upload).** Rule: User sees it now → FGS; everything else → WorkManager.
 
 `FGS` user-visible · `WorkManager` system-managed · `Doze-safe` · `Guaranteed execution` · `API 35+ 6h timeout`
 
@@ -135,7 +169,9 @@ On device boot/charge idle:
 
 ### Lifecycle Saving & Process Death
 
-> **TL;DR:** SavedStateHandle (ViewModel-integrated) survives process death. onSaveInstanceState() survives config change only. Use SavedStateHandle for state, onDestroy() for cleanup only.
+> [!TIP]
+> SavedStateHandle (ViewModel-integrated) survives process death. onSaveInstanceState() survives config change
+> only. Use SavedStateHandle for state, onDestroy() for cleanup only.
 
 `SavedStateHandle` process-death-safe · `onStop()` always called · `onDestroy()` not guaranteed · `Config change` vs `Process death` · `Binder transaction limit`
 

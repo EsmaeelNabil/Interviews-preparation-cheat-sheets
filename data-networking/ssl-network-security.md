@@ -6,7 +6,9 @@
 
 ### Certificate Pinning
 
-> **TL;DR:** Pin specific certificates (SHA256 hash) to prevent MITM attacks. Add pins to OkHttpClient. Generate pin: `openssl s_client | openssl x509 | openssl dgst`.
+> [!WARNING]
+> **Pin specific certificates (SHA256 hash) to prevent MITM attacks.** Add pins to OkHttpClient. Generate pin:
+> `openssl s_client | openssl x509 | openssl dgst`.
 
 CertificatePinner · SHA256 pins · Backup pins · OkHttp integration
 
@@ -61,7 +63,9 @@ val retrofit = Retrofit.Builder().client(httpClient).build()
 
 ### Network Security Configuration
 
-> **TL;DR:** Define per-domain security policies in `network_security_config.xml`. Set certificate trust anchors, disable cleartext. Reference in AndroidManifest.
+> [!TIP]
+> Define per-domain security policies in `network_security_config.xml`. Set certificate trust anchors, disable
+> cleartext. Reference in AndroidManifest.
 
 Per-domain policies · Trust anchors · Cleartext control · Dev server exceptions
 

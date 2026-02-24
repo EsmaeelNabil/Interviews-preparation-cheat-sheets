@@ -2,7 +2,9 @@
 
 [← Back to main index](../README.md)
 
-> [!IMPORTANT] **Performance expertise separates production engineers from hobbyists.** Memory leaks, battery drain, and frame stuttering are interview red flags. Interview frequency: **HIGH**.
+> [!IMPORTANT]
+> **Performance expertise separates production engineers from hobbyists.** Memory leaks, battery drain, and
+> frame stuttering are interview red flags. Interview frequency: **HIGH**.
 
 ---
 

@@ -6,7 +6,9 @@
 
 ### Common R8 Issues
 
-> **TL;DR:** R8 obfuscates & shrinks code for release. Enable `minifyEnabled true` + `shrinkResources true`. Use `-keep` rules for reflection (data classes, Retrofit models, callbacks).
+> [!WARNING]
+> **R8 obfuscates & shrinks code for release. Enable `minifyEnabled true` + `shrinkResources true`.** Use
+> `-keep` rules for reflection (data classes, Retrofit models, callbacks).
 
 R8 obfuscation · Keep rules · Shrinking · Testing obfuscated APK
 

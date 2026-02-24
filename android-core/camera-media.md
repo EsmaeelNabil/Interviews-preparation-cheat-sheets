@@ -6,7 +6,11 @@
 
 ### CameraX Basics
 
-> **TL;DR:** Initialize `ProcessCameraProvider` → build `Preview` + `ImageCapture` use cases → `bindToLifecycle()` to attach to fragment lifecycle. Always `unbindAll()` before rebinding.
+> [!TIP]
+> **Initialize `ProcessCameraProvider`** → build `Preview` + `ImageCapture` use cases
+> → `bindToLifecycle()` to attach to fragment lifecycle
+>
+> Always `unbindAll()` before rebinding
 
 `ProcessCameraProvider` · Lifecycle-aware binding · `Preview` + `ImageCapture` · Main thread executor
 
@@ -73,7 +77,7 @@ Framework:
 
 ### Media3 (ExoPlayer) Basics
 
-> **TL;DR:** Create `ExoPlayer` → set `MediaItem` (URL or local file) → `prepare()` → `play()`. Always `release()` in `onDestroyView`.
+> [!TIP] Create `ExoPlayer` → set `MediaItem` (URL or local file) → `prepare()` → `play()`. Always `release()` in `onDestroyView`.
 
 `ExoPlayer` · `MediaItem` · Lifecycle cleanup · Plays local + remote
 

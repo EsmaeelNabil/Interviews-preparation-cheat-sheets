@@ -36,7 +36,9 @@ stateDiagram-v2
 
 ### Threads vs. Coroutines — The Analogy
 
-> [!TIP] **Threads block (hold OS resources); coroutines suspend (yield to scheduler).** ~100K coroutines fit on 8 threads; 8 threads = max ~100 actual OS threads (rest blocked).
+> [!TIP]
+> **Threads block (hold OS resources); coroutines suspend (yield to scheduler).** ~100K coroutines fit on 8
+> threads; 8 threads = max ~100 actual OS threads (rest blocked).
 
 `Thread blocks` · `Coroutine suspends` · `~100K on 8 threads` · `No OS context switch` · `State machine under hood`
 
@@ -236,7 +238,9 @@ val result = withContext(Dispatchers.Default) {
 
 ### Exception Handling in Coroutines
 
-> **TL;DR:** Exceptions in launched coroutines don't propagate to try-catch. Instead, use `CoroutineExceptionHandler`. Job hierarchy determines scope: Job cancels all children; SupervisorJob isolates.
+> [!TIP]
+> Exceptions in launched coroutines don't propagate to try-catch. Instead, use `CoroutineExceptionHandler`. Job
+> hierarchy determines scope: Job cancels all children; SupervisorJob isolates.
 
 `CoroutineExceptionHandler` · `Job cancels siblings` · `SupervisorJob isolates` · `Flow.catch emits` · `Context inheritance`
 
@@ -357,7 +361,9 @@ launch {  // Inherits exceptionHandler automatically
 
 ### StateFlow vs SharedFlow
 
-> **TL;DR:** StateFlow = always holds current value (SSOT); replays to new subscribers. SharedFlow = stateless, no replay by default. Use StateFlow for UI state, SharedFlow for events.
+> [!TIP]
+> StateFlow = always holds current value (SSOT); replays to new subscribers. SharedFlow = stateless, no replay
+> by default. Use StateFlow for UI state, SharedFlow for events.
 
 `StateFlow` for state · `SharedFlow` for events · `Replay` control · `distinct` built-in · `Hot flow`
 
@@ -471,7 +477,9 @@ class SharedFlowImpl<T> {
 
 ### collectAsStateWithLifecycle — The 2026 Standard
 
-> **TL;DR:** `collectAsStateWithLifecycle` collects only when lifecycle ≥ STARTED (usually ON_RESUME). Stops automatically in background, preventing wasted work. Better than `collectAsState` (which collects forever).
+> [!TIP]
+> `collectAsStateWithLifecycle` collects only when lifecycle ≥ STARTED (usually ON_RESUME). Stops automatically
+> in background, preventing wasted work. Better than `collectAsState` (which collects forever).
 
 `Lifecycle-aware` · `Stops in background` · `KMP stable` · `No memory leak` · `Hot flow efficient`
 

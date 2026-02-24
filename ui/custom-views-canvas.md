@@ -6,7 +6,9 @@
 
 ### Custom View Lifecycle & Drawing
 
-> **TL;DR:** Override `onMeasure()` (set size) → `onLayout()` (position) → `onDraw()` (draw). Pre-allocate Paint in member variable—never allocate in onDraw() (garbage = jank).
+> [!WARNING]
+> **Override `onMeasure()` (set size) → `onLayout()` (position) → `onDraw()` (draw).** Pre-allocate Paint in
+> member variable—never allocate in onDraw() (garbage = jank).
 
 Measure/layout/draw lifecycle · Canvas API · Paint pooling · invalidate() for redraws
 

@@ -2,7 +2,9 @@
 
 [← Back to main index](../README.md)
 
-> [!IMPORTANT] **Foundation for all Android development.** Master these fundamentals before diving into Architecture or Android Core. Interview frequency: **CRITICAL**.
+> [!IMPORTANT]
+> **Foundation for all Android development.** Master these fundamentals before diving into Architecture or
+> Android Core. Interview frequency: **CRITICAL**.
 
 ---
 

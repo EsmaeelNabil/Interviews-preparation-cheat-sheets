@@ -2,7 +2,9 @@
 
 [← Back to main index](../README.md)
 
-> [!TIP] **Testing pyramid separates engineers from hackers.** Strong test coverage + fast feedback loops are staff-level expectations. Gradle mastery shows deep platform knowledge. Interview frequency: **MEDIUM-HIGH**.
+> [!TIP]
+> **Testing pyramid separates engineers from hackers.** Strong test coverage + fast feedback loops are
+> staff-level expectations. Gradle mastery shows deep platform knowledge. Interview frequency: **MEDIUM-HIGH**.
 
 ---
 

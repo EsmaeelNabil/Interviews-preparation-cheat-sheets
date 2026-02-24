@@ -6,7 +6,9 @@
 
 ### Mental Model Differences
 
-> **TL;DR:** RxJava = stream abstraction, threading explicit (observeOn/subscribeOn), built-in backpressure. Coroutines = sequential async code, Dispatchers, auto-cancellation. Coroutines preferred in modern Android.
+> [!TIP]
+> **RxJava = stream abstraction, threading explicit (observeOn/subscribeOn), built-in backpressure.** Coroutines
+> = sequential async code, Dispatchers, auto-cancellation. Coroutines preferred in modern Android.
 
 RxJava for complex streams · Coroutines for readability · Both valid · Migration path exists
 

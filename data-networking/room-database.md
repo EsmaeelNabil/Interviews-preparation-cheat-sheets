@@ -4,9 +4,74 @@
 
 ## 17. Room Database Advanced Patterns
 
+<details open>
+<summary><strong>🗂️ Room Architecture & ER Relationships</strong></summary>
+
+```mermaid
+erDiagram
+    USERS ||--o{ POSTS : writes
+    USERS ||--o{ COMMENTS : creates
+    POSTS ||--o{ COMMENTS : receives
+    USERS {
+        int user_id PK
+        string name
+        string email
+        timestamp created_at
+    }
+    POSTS {
+        int post_id PK
+        int user_id FK
+        string title
+        string content
+        timestamp created_at
+    }
+    COMMENTS {
+        int comment_id PK
+        int post_id FK
+        int user_id FK
+        string text
+        timestamp created_at
+    }
+```
+
+</details>
+
+<details>
+<summary><strong>🏗️ Room Architecture Layers</strong></summary>
+
+```mermaid
+flowchart TB
+    subgraph App["Application Layer"]
+        VM["ViewModel"]
+        UC["UseCase"]
+    end
+    subgraph Repo["Repository"]
+        RI["Repository Interface"]
+        RImpl["RepositoryImpl"]
+    end
+    subgraph DB["Room Database"]
+        DAO["DAO (Data Access Object)"]
+        Entity["@Entity (Classes)"]
+        SQLite["SQLite Database File"]
+    end
+
+    VM --> UC
+    UC --> RI
+    RImpl --> DAO
+    DAO --> Entity
+    Entity --> SQLite
+```
+
+</details>
+
+---
+
 ### Migrations & Schema Evolution
 
-> **TL;DR:** Room migrations handle schema version bumps. Define `Migration(oldVersion, newVersion)` with SQL. Always test migrations (data loss + crashes common if untested). Use `@Query @PrimaryKey` to catch schema mismatches at compile-time.
+> [!WARNING] **Room migrations handle schema version bumps.**
+> - Define `Migration(oldVersion, newVersion)` with SQL
+> - Always test migrations (data loss + crashes common if untested)
+> - Use `@Query @PrimaryKey` to catch schema mismatches at compile-time
 
 Migration path · `ALTER TABLE` · Schema versioning · Test migrations · Data loss risks
 
@@ -188,7 +253,9 @@ User downgraded app → nuke DB. Risky (data loss).
 
 ### Query Optimization: N+1 Prevention
 
-> **TL;DR:** N+1 = fetch 1 user, then N queries for posts (1 + N queries total). Fix: use JOIN in SQL or Room @Relation (auto-joins). Massive performance difference at scale.
+> [!TIP]
+> N+1 = fetch 1 user, then N queries for posts (1 + N queries total). Fix: use JOIN in SQL or Room @Relation
+> (auto-joins). Massive performance difference at scale.
 
 `N+1 problem` · `JOIN optimization` · `@Relation` auto-join · `Scale matters` · `Single query vs N queries`
 
@@ -337,7 +404,10 @@ suspend fun getUsersWithPostsBatch(): List<UserWithPosts>
 
 ### Transactions & Atomicity
 
-> **TL;DR:** `@Transaction` wraps multiple queries in SQLite transaction (all succeed or all fail). Use for multi-step operations (insert user → insert posts). Atomicity prevents partial updates (user created, posts failed = data corruption).
+> [!TIP] `@Transaction` wraps multiple queries in SQLite transaction.
+> - All succeed or all fail
+> - Use for multi-step operations (insert user → insert posts)
+> - Atomicity prevents partial updates (user created, posts failed = data corruption)
 
 ACID properties · All-or-nothing · Rollback on error · SQLite transaction · `@Transaction` annotation
 

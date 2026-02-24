@@ -6,7 +6,10 @@
 
 ### Most Common Bugs (& Detection)
 
-> **TL;DR:** Top bugs: race conditions (concurrent state updates), NPE (unmounted Composables), memory leaks (GlobalScope), jank (GC on main), stale cache (not invalidated), deadlocks (transaction waits). Each has a detection signal—use logcat, LeakCanary, Perfetto, or manual testing to pinpoint.
+> [!WARNING]
+> **Top bugs: race conditions (concurrent state updates), NPE (unmounted Composables), memory leaks
+> (GlobalScope), jank (GC on main), stale cache (not invalidated), deadlocks.** Use logcat, LeakCanary,
+> Perfetto, or manual testing to pinpoint.
 
 Race conditions · NPE in UI · Memory leaks · Jank · Cache staleness · Deadlocks
 
@@ -196,7 +199,10 @@ fun ItemList(items: List<Item>) {
 
 ### Debugging Tools & Techniques
 
-> **TL;DR:** Logcat for finding errors (grep "FATAL"), Android Studio debugger for pausing/inspecting, LeakCanary for memory leaks (auto-detects), Perfetto for performance (frame timing), Chucker for network (in-app HTTP inspector), ThreadLooper for thread checking.
+> [!TIP]
+> Logcat for finding errors (grep "FATAL"), Android Studio debugger for pausing/inspecting, LeakCanary for
+> memory leaks (auto-detects), Perfetto for performance (frame timing), Chucker for network (in-app HTTP
+> inspector), ThreadLooper for thread checking.
 
 Logcat · Breakpoints · LeakCanary · Perfetto · Chucker · Thread safety checks
 
@@ -321,7 +327,10 @@ if (Looper.myLooper() != Looper.getMainLooper()) {
 
 ### Quick Debugging Checklist
 
-> **TL;DR:** Crash: find exception in logcat, read stack trace bottom-up, jump to line, reproduce (always? intermittent?). Lag: trace frames with Perfetto, check allocations. Wrong state: add logs to trace divergence from expected path.
+> [!TIP]
+> Crash: find exception in logcat, read stack trace bottom-up, jump to line, reproduce (always? intermittent?).
+> Lag: trace frames with Perfetto, check allocations. Wrong state: add logs to trace divergence from expected
+> path.
 
 Crash workflow · Lag detection · State tracing
 

@@ -1,6 +1,8 @@
 # 📱 Android Interview Preparation Guide
 
-> [!TIP] **Master the fundamentals** across 44 sections spanning Kotlin, Architecture, Android Core, UI, Data & Networking, Performance, Testing, and Interview Strategy. Use the mindmap below to navigate your study path.
+> [!TIP]
+> **Master the fundamentals** across 44 sections spanning Kotlin, Architecture, Android Core, UI, Data &
+> Networking, Performance, Testing, and Interview Strategy. Use the mindmap below to navigate your study path.
 
 ---
 

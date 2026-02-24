@@ -4,9 +4,42 @@
 
 ## 12. Design Patterns in Android
 
+<details open>
+<summary><strong>🎨 GoF Design Patterns Classification</strong></summary>
+
+```mermaid
+classDiagram
+    class DesignPatterns
+    DesignPatterns <|-- Creational
+    DesignPatterns <|-- Structural
+    DesignPatterns <|-- Behavioral
+
+    Creational : Singleton
+    Creational : Factory
+    Creational : Builder
+    Creational : Abstract Factory
+
+    Structural : Adapter
+    Structural : Decorator
+    Structural : Facade
+    Structural : Proxy
+
+    Behavioral : Observer
+    Behavioral : Strategy
+    Behavioral : State
+    Behavioral : Iterator
+    Behavioral : Template Method
+```
+
+</details>
+
+---
+
 ### Singleton Pattern (Problem & Solutions)
 
-> **TL;DR:** Singleton = single global instance. **Avoid** for testability (hard to mock). Kotlin `object` = thread-safe, but use Dependency Injection instead. If needed: private constructor + lazy initialization.
+> [!WARNING]
+> **Singleton = single global instance. AVOID for testability (hard to mock).** Kotlin `object` = thread-safe,
+> but use Dependency Injection instead. If needed: private constructor + lazy initialization.
 
 `object` keyword · Thread-safe · Avoid global state · DI > Singleton · Defensive copy
 
@@ -136,7 +169,9 @@ val manager = UserManager(fakeRepo)
 
 ### Observer Pattern (Flows vs. Callbacks)
 
-> **TL;DR:** Callbacks = manual lifecycle, memory leaks if unsubscribe forgotten. **Flows** = automatic scope, composable operators (map, filter), backpressure, cancellation safe. Always use Flows in modern Android.
+> [!TIP]
+> Callbacks = manual lifecycle, memory leaks if unsubscribe forgotten. **Flows** = automatic scope, composable
+> operators (map, filter), backpressure, cancellation safe. Always use Flows in modern Android.
 
 Callback hell · Flow composability · Automatic cleanup · Backpressure · StateFlow for UI state
 
@@ -296,7 +331,9 @@ flow {
 
 ### Factory Pattern
 
-> **TL;DR:** Factory = abstraction for object creation. In Kotlin: often prefer **default parameters** or **DSL (Builder pattern)**. Factory pattern rare unless creating many variants or complex logic needed.
+> [!TIP]
+> Factory = abstraction for object creation. In Kotlin: often prefer **default parameters** or **DSL (Builder
+> pattern)**. Factory pattern rare unless creating many variants or complex logic needed.
 
 Object creation · Builder DSL · Default parameters · Abstraction layer · Variant handling
 
@@ -475,7 +512,9 @@ fun provideHttpClient(factory: HttpClientFactory): HttpClient {
 
 ### Repository Pattern
 
-> **TL;DR:** Repository = abstraction layer over data sources (API, DB, cache). Single interface, multiple implementations (real, fake). Benefits: testable, swappable logic, centralized caching/sync strategy.
+> [!TIP]
+> Repository = abstraction layer over data sources (API, DB, cache). Single interface, multiple implementations
+> (real, fake). Benefits: testable, swappable logic, centralized caching/sync strategy.
 
 Data abstraction · Cache-through pattern · Sync coordination · Testability · Single source of truth (Room)
 

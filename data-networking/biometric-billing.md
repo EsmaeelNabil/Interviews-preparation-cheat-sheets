@@ -6,7 +6,9 @@
 
 ### Biometric Authentication
 
-> **TL;DR:** Use `BiometricPrompt.authenticate()` to show fingerprint/face auth dialog. Override `AuthenticationCallback` for success/error. Combine with `CryptoObject` for secure operations.
+> [!TIP]
+> **Use `BiometricPrompt.authenticate()` to show fingerprint/face auth dialog.** Override
+> `AuthenticationCallback` for success/error. Combine with `CryptoObject` for secure operations.
 
 BiometricPrompt · Fingerprint/Face · CryptoObject · Callback-based
 
@@ -35,7 +37,9 @@ biometricPrompt.authenticate(promptInfo)
 
 ### Google Play Billing
 
-> **TL;DR:** Initialize `BillingClient` → `queryProductDetailsAsync()` to list products → `launchBillingFlow()` to start purchase. Handle `BillingResult` for success/error.
+> [!TIP]
+> Initialize `BillingClient` → `queryProductDetailsAsync()` to list products → `launchBillingFlow()` to start
+> purchase. Handle `BillingResult` for success/error.
 
 BillingClient · queryProductDetails · launchBillingFlow · Purchase state tracking
 

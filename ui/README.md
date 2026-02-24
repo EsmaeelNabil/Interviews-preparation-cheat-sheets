@@ -2,7 +2,9 @@
 
 [← Back to main index](../README.md)
 
-> [!TIP] **Modern Android UI requires deep understanding of Compose and performance.** Jetpack Compose is now the standard; legacy RecyclerView knowledge is table stakes. Interview frequency: **HIGH**.
+> [!TIP]
+> **Modern Android UI requires deep understanding of Compose and performance.** Jetpack Compose is now the
+> standard; legacy RecyclerView knowledge is table stakes. Interview frequency: **HIGH**.
 
 ---
 

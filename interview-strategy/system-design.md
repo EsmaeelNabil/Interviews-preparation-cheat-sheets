@@ -13,7 +13,9 @@
 
 ### Offline-First Architecture
 
-> **TL;DR:** Room is Single Source of Truth (SSOT). Network updates Room; UI always observes Room. Enables offline-first: app works offline, syncs when online.
+> [!TIP]
+> **Room is Single Source of Truth (SSOT). Network updates Room; UI always observes Room.** Enables
+> offline-first: app works offline, syncs when online.
 
 `Room` SSOT · `Network → Room → UI` · `Flow observes DB` · `Invalidation tracking` · `Automatic sync`
 
@@ -196,7 +198,9 @@ if (age < TTL_1_HOUR) {
 
 ### Database Schema Design (Room)
 
-> **TL;DR:** Design entities with indices on query columns. Use foreign keys with CASCADE for referential integrity. Add timestamps for caching/sync. Test migrations early.
+> [!TIP]
+> Design entities with indices on query columns. Use foreign keys with CASCADE for referential integrity. Add
+> timestamps for caching/sync. Test migrations early.
 
 `Entity design` · `Indices` · `Foreign keys + CASCADE` · `Migrations` · `SQLite WAL mode`
 

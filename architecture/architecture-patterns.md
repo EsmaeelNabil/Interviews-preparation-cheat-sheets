@@ -4,9 +4,63 @@
 
 ## 4. Architecture & Clean Principles
 
+<details open>
+<summary><strong>🏗️ Architecture Patterns Comparison</strong></summary>
+
+```mermaid
+flowchart TB
+    subgraph Clean["Clean Architecture"]
+        PI["Presentation"]
+        DI["Domain"]
+        DA["Data"]
+        PI -->|UseCase| DI
+        DI -->|Entity| PI
+        DI -->|Repository\nInterface| DA
+        DA -->|RepositoryImpl| DI
+    end
+
+    subgraph MVI["MVI: Unidirectional Flow"]
+        User["👤 User"]
+        UI["🎨 UI"]
+        Reducer["🔧 Reducer\n(Pure Function)"]
+        State["📊 State"]
+        User -->|Intent| UI
+        UI -->|Intent| Reducer
+        Reducer -->|new State| State
+        State -->|emit| UI
+    end
+```
+
+</details>
+
+<details>
+<summary><strong>📋 MVI Sequence Diagram</strong></summary>
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant UI
+    participant VM as ViewModel
+    participant Reducer as Reducer
+    participant State as UiState Flow
+
+    User->>UI: tap button
+    UI->>VM: intent(LoadData)
+    VM->>Reducer: reduce(currentState, intent)
+    Reducer->>State: emit new UiState
+    State->>UI: recompose
+    UI->>User: show results
+```
+
+</details>
+
+---
+
 ### MVI vs MVVM
 
-> **TL;DR:** MVVM = multiple independent flows (state scattered). MVI = single immutable state (SSOT), all changes funnel through reducer. MVI better for complex UIs, MVVM simpler for small screens.
+> [!IMPORTANT]
+> **MVVM = multiple independent flows (state scattered). MVI = single immutable state (SSOT), all changes funnel
+> through reducer.** MVI better for complex UIs, MVVM simpler for small screens.
 
 `MVVM` scattered state · `MVI` unidirectional · `SSOT` single source · `Intent → Reducer → State` · `Deterministic`
 
@@ -126,7 +180,9 @@ viewModel.load() {
 
 ### Clean Architecture (Dependency Rule)
 
-> **TL;DR:** 3-layer model: Data (repos, API) → Domain (use cases, pure Kotlin) → Presentation (UI). Each layer depends only on inner layers. Domain is independent.
+> [!TIP]
+> 3-layer model: Data (repos, API) → Domain (use cases, pure Kotlin) → Presentation (UI). Each layer depends
+> only on inner layers. Domain is independent.
 
 `3 layers` · `Dependency Rule` · `Testable` · `Domain is pure Kotlin` · `No cross-layer dependencies`
 
@@ -237,7 +293,9 @@ dependencies {
 
 ### KMP: expect/actual
 
-> **TL;DR:** `expect` in commonMain declares API; `actual` in androidMain/iosMain provides implementation. Compiler validates 1:1 matching at link time. Use for platform-specific APIs only; prefer KMP libraries first.
+> [!TIP]
+> `expect` in commonMain declares API; `actual` in androidMain/iosMain provides implementation. Compiler
+> validates 1:1 matching at link time. Use for platform-specific APIs only; prefer KMP libraries first.
 
 `expect` declares API · `actual` implements · `Compile-time matched` · `Link time validation` · `One per platform`
 
@@ -345,7 +403,9 @@ fun getPlatform() = Class.forName("com.app.PlatformImpl").getConstructor().newIn
 
 ### Sharing ViewModels in KMP
 
-> **TL;DR:** `androidx.lifecycle:lifecycle-viewmodel` is KMP-stable (2.7.0+). Define ViewModels in commonMain. iOS: SKIE exposes StateFlow as Swift AsyncSequence. DI: Koin (Hilt Android-only).
+> [!TIP]
+> `androidx.lifecycle:lifecycle-viewmodel` is KMP-stable (2.7.0+). Define ViewModels in commonMain. iOS: SKIE
+> exposes StateFlow as Swift AsyncSequence. DI: Koin (Hilt Android-only).
 
 `lifecycle-viewmodel KMP-stable` · `SKIE for iOS` · `StateFlow → AsyncSequence` · `Koin DI` · `commonMain ViewModels`
 

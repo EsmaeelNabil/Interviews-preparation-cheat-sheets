@@ -6,7 +6,9 @@
 
 ### Compose UI Testing
 
-> **TL;DR:** Use `composeRule.setContent {}` to render UI, `.onNodeWithText()` to find nodes, `.performClick()` for interactions, `.assertIsDisplayed()` for assertions.
+> [!TIP]
+> **Use `composeRule.setContent {}` to render UI, `.onNodeWithText()` to find nodes, `.performClick()` for
+> interactions, `.assertIsDisplayed()` for assertions.**
 
 composeRule · Semantics tree queries · Scroll actions · Assertions
 
@@ -58,7 +60,9 @@ class MyScreenTest {
 
 ### Espresso for Legacy Views
 
-> **TL;DR:** Use `ActivityScenarioRule` to launch activity. `onView(withId())` to find views. `perform(click())` for actions. `check(matches())` for assertions.
+> [!TIP]
+> Use `ActivityScenarioRule` to launch activity. `onView(withId())` to find views. `perform(click())` for
+> actions. `check(matches())` for assertions.
 
 ActivityScenarioRule · View matchers · ViewActions · Idling
 

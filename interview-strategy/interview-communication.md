@@ -6,7 +6,10 @@
 
 ### Live Coding Best Practices
 
-> **TL;DR:** Spend 70% on happy path, 20% on errors, 10% on polish. Clarify requirements first (1 min), sketch architecture (1 min), implement visible structure (18 min), then error handling (5 min). Talk constantly—interviewers want to hear reasoning.
+> [!IMPORTANT]
+> **Spend 70% on happy path, 20% on errors, 10% on polish.** Clarify requirements first (1 min), sketch
+> architecture (1 min), implement visible structure (18 min), then error handling (5 min). Talk
+> constantly—interviewers want to hear reasoning.
 
 Time-boxing · Happy path first · Visible architecture · Constant communication · Code quality signals
 
@@ -191,7 +194,12 @@ Spending 70% time on happy path maximizes the chance of showing #1 and #2.
 
 ### System Design Interview Structure
 
-> **TL;DR:** 5-step interview: (1) Clarify scope—ask about scale, offline, real-time, conflicts (2 min). (2) Sketch architecture—Room + Repository + ViewModel (3 min). (3) Deep dive critical paths—load failures, sync conflicts (7 min). (4) Trade-offs—why these decisions (2 min). (5) Invite follow-up (1 min).
+> [!TIP] 5-step interview structure:
+> 1. Clarify scope—ask about scale, offline, real-time, conflicts (2 min)
+> 2. Sketch architecture—Room + Repository + ViewModel (3 min)
+> 3. Deep dive critical paths—load failures, sync conflicts (7 min)
+> 4. Trade-offs—why these decisions (2 min)
+> 5. Invite follow-up (1 min)
 
 Clarify scope · Sketch architecture · Deep critical paths · Trade-offs · Invite follow-up
 
@@ -365,7 +373,10 @@ This structure demonstrates all five.
 
 ### How to Answer Architecture Questions
 
-> **TL;DR:** Answer formula: (1) "I would..." [solution] (2) "Because..." [reasoning/trade-off] (3) "Alternative..." [option B] (4) "Choose A because..." [rationale]. Structured answers signal seniority—shows you think in trade-offs, not dogma.
+> [!TIP]
+> Answer formula: (1) "I would..." [solution] (2) "Because..." [reasoning/trade-off] (3) "Alternative..."
+> [option B] (4) "Choose A because..." [rationale]. Structured answers signal seniority—shows you think in
+> trade-offs, not dogma.
 
 Answer formula · Trade-offs first · Alternatives · Context matters · No dogma
 
@@ -414,7 +425,10 @@ A: "I inject a fake Repository returning known values. Use runTest builder
 
 ### Reverse Questions to Ask
 
-> **TL;DR:** Ask questions that show you're thinking about trade-offs and culture fit. For technical companies: deep technical questions (modularization, offline strategy). For product companies: growth/shipping questions. For team: "biggest challenge" signals you want to solve real problems, not just pass time.
+> [!TIP] Ask questions that show thinking about trade-offs and culture fit.
+> - **Technical companies:** deep technical questions (modularization, offline strategy)
+> - **Product companies:** growth/shipping questions
+> - **Team:** "biggest challenge" signals you want to solve real problems, not just pass time
 
 Signal competence · Tailor to company · Cultural fit · Technical depth · Show interest
 

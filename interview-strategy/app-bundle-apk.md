@@ -6,7 +6,9 @@
 
 ### Dynamic Feature Delivery (App Bundle)
 
-> **TL;DR:** Create dynamic feature modules, request download via `SplitInstallManager.startInstall()`. Google Play splits APK by device config (language, density, architecture). Only install needed APKs.
+> [!TIP]
+> **Create dynamic feature modules, request download via `SplitInstallManager.startInstall()`.** Google Play
+> splits APK by device config (language, density, architecture). Only install needed APKs.
 
 Dynamic features · Splits · On-demand delivery · Smaller downloads
 

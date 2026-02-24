@@ -4,9 +4,32 @@
 
 ## 6. Memory & Performance
 
+<details open>
+<summary><strong>🔍 Memory Leak Detection Flowchart</strong></summary>
+
+```mermaid
+flowchart TD
+    Leak["🚨 Memory Leak Detected"] --> Source{Leak Source?}
+    Source -->|GlobalScope/Static| GS["GlobalScope or\nStatic field"]
+    Source -->|Listeners| LIS["Unregistered\nListeners"]
+    Source -->|Context| CTX["Context captured\nin lambda"]
+    GS --> Fix1["Use viewModelScope\nor lifecycleScope"]
+    LIS --> Fix2["Unregister in\nonStop()"]
+    CTX --> Fix3["Use weak refs or\npass data only"]
+    Fix1 --> LeakCanary["Run LeakCanary\nto verify fix"]
+    Fix2 --> LeakCanary
+    Fix3 --> LeakCanary
+```
+
+</details>
+
+---
+
 ### 3 Common Memory Leaks (With Detection)
 
-> **TL;DR:** Memory leak = object retained when should be garbage collected. Usually: Activity retained after back navigation. Top causes: wrong coroutine scope, lambda capturing context, unregistered listeners.
+> [!WARNING]
+> **Memory leak = object retained when should be garbage collected.** Usually: Activity retained after back
+> navigation. Top causes: wrong coroutine scope, lambda capturing context, unregistered listeners.
 
 `GlobalScope` × Activity · `Callback captures context` · `Unregistered listeners` · `LeakCanary detection` · `GC root chain`
 
@@ -180,7 +203,9 @@ lifecycleScope.launch {
 
 ### GC Root — How Objects are Kept Alive
 
-> **TL;DR:** GC Root = starting point for reachability traversal. Thread stacks, static fields, JNI refs are always roots. Anything reachable from a root stays alive.
+> [!TIP]
+> GC Root = starting point for reachability traversal. Thread stacks, static fields, JNI refs are always roots.
+> Anything reachable from a root stays alive.
 
 `GC Root` always alive · `Thread stacks` · `Static fields` · `JNI references` · `Reachability chains`
 
@@ -349,7 +374,9 @@ val softRef = SoftReference(bitmap)
 
 ### Compose Recomposition — Smart Re-execution
 
-> **TL;DR:** Recomposition = re-run composable when inputs change. Composition tree caches state via `remember`. Compiler skips unchanged branches (strong skipping). Use stable types to enable skipping.
+> [!TIP]
+> Recomposition = re-run composable when inputs change. Composition tree caches state via `remember`. Compiler
+> skips unchanged branches (strong skipping). Use stable types to enable skipping.
 
 `Recomposition` only affected nodes · `Composition tree` in memory · `Strong skipping` compiler analysis · `Stable types` enable optimization
 

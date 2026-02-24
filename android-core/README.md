@@ -2,7 +2,9 @@
 
 [← Back to main index](../README.md)
 
-> [!IMPORTANT] **The beating heart of Android development.** Lifecycle management and component communication show deep platform knowledge. Interview frequency: **CRITICAL**.
+> [!IMPORTANT]
+> **The beating heart of Android development.** Lifecycle management and component communication show deep
+> platform knowledge. Interview frequency: **CRITICAL**.
 
 ---
 

@@ -6,7 +6,9 @@
 
 ### Runtime Permissions Pattern (2026 Modern)
 
-> **TL;DR:** Use `registerForActivityResult()` with `ActivityResultContracts.RequestPermission()`. Check permission first → show rationale if user denied before → request.
+> [!TIP]
+> **Use `registerForActivityResult()` with `ActivityResultContracts.RequestPermission()`.** Check permission
+> first → show rationale if user denied before → request.
 
 `checkSelfPermission()` · `shouldShowRequestPermissionRationale()` · No onActivityResult needed · Composable
 
@@ -73,7 +75,7 @@ registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted
 
 ### Scoped Storage (API 30+)
 
-> **TL;DR:** Can't access shared `/sdcard/DCIM` directly. Use app-specific dirs (no permission) OR MediaStore + permission.
+> [!TIP] Can't access shared `/sdcard/DCIM` directly. Use app-specific dirs (no permission) OR MediaStore + permission.
 
 App-specific: `getExternalFilesDir()` · MediaStore: `EXTERNAL_CONTENT_URI` · Permissions required · Query SAF for legacy
 

@@ -6,7 +6,17 @@
 
 ### Core Topics (Memorize These)
 
-> **TL;DR:** 5 questions interviewers ALWAYS ask. Prepare 1-2 min answers. Think out loud. Show reasoning.
+> [!IMPORTANT] **5 questions interviewers ALWAYS ask. Prepare 1-2 min answers.** Think out loud. Show reasoning.
+
+**Night Before Checklist:**
+- [ ] Review architecture: MVVM/MVI + Repository + DI (1 min prep)
+- [ ] Prepare concurrency answer: Dispatchers + lifecycle scope (1 min prep)
+- [ ] Memory leaks: viewModelScope, SavedStateHandle, WeakReferences (1 min prep)
+- [ ] Testing: Fake repo, runTest, advanceUntilIdle() pattern (2 min prep)
+- [ ] Offline-first: Room SSOT, sync workers, optimistic updates (1 min prep)
+- [ ] Live code 3x: User + ViewModel + UI quick sketch (5 min practice)
+- [ ] Sleep 7+ hours
+- [ ] Morning: Light review, coffee, deep breaths
 
 Architecture · Concurrency · Memory · Testing · Offline-first
 

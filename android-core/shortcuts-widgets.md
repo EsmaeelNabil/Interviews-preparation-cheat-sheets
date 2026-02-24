@@ -6,7 +6,9 @@
 
 ### App Shortcuts
 
-> **TL;DR:** Define in `shortcuts.xml` with shortcutId, icon, labels. Register in manifest via `<meta-data>`. Launcher shows long-press menu with quick actions.
+> [!TIP]
+> **Define in `shortcuts.xml` with shortcutId, icon, labels.** Register in manifest via `<meta-data>`. Launcher
+> shows long-press menu with quick actions.
 
 Launcher shortcuts · Intent-based · Quick actions
 
@@ -25,7 +27,9 @@ Launcher shortcuts · Intent-based · Quick actions
 
 ### Home Screen Widgets
 
-> **TL;DR:** Extend `AppWidgetProvider`, override `onUpdate()`, use `RemoteViews` to build UI. Register receiver in manifest with `APPWIDGET_UPDATE` action.
+> [!TIP]
+> **Extend `AppWidgetProvider`, override `onUpdate()`, use `RemoteViews` to build UI.** Register receiver in
+> manifest with `APPWIDGET_UPDATE` action.
 
 RemoteViews · AppWidgetProvider · Limited widgets · Home screen
 
