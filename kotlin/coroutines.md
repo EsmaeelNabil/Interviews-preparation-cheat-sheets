@@ -4,9 +4,39 @@
 
 ## 3. Concurrency & Kotlin Coroutines
 
+<details open>
+<summary><strong>🎯 Coroutine State Lifecycle (Interactive)</strong></summary>
+
+```mermaid
+stateDiagram-v2
+    [*] --> Created : launch/async
+    Created --> Active : start()
+    Active --> Suspended : suspend fun
+    Suspended --> Active : resumed
+    Active --> Completing : returns
+    Completing --> Completed : children done
+    Active --> Cancelling : cancel()
+    Completing --> Cancelling : child fails
+    Cancelling --> Cancelled : cleanup done
+    Completed --> [*]
+    Cancelled --> [*]
+    note right of Suspended
+        yield()/I/O call
+        Thread freed
+    end note
+    note right of Cancelling
+        Job cancellation
+        CancellationException thrown
+    end note
+```
+
+</details>
+
+---
+
 ### Threads vs. Coroutines — The Analogy
 
-> **TL;DR:** Threads block (hold OS resources); coroutines suspend (yield to scheduler). ~100K coroutines fit on 8 threads; 8 threads = max ~100 actual OS threads (rest blocked).
+> [!TIP] **Threads block (hold OS resources); coroutines suspend (yield to scheduler).** ~100K coroutines fit on 8 threads; 8 threads = max ~100 actual OS threads (rest blocked).
 
 `Thread blocks` · `Coroutine suspends` · `~100K on 8 threads` · `No OS context switch` · `State machine under hood`
 
@@ -89,15 +119,32 @@ The **thread is freed at label 0**. Scheduler uses it for other tasks. When API 
 
 ### Dispatchers — When & Why
 
-> **TL;DR:** Dispatcher = thread pool scheduler. Main = UI thread only. IO = 64 threads (elastic). Default = CPU cores. Choose based on work type.
+> [!IMPORTANT] **Dispatcher = thread pool scheduler.** Main = UI thread only. IO = 64 threads (elastic). Default = CPU cores. Choose based on work type.
 
 `Main` UI-safe · `IO` for I/O · `Default` for CPU work · `Unconfined` testing only · `withContext()` to switch
 
-| Dispatcher | Thread Pool | Use For |
-|---|---|---|
-| **Main** | UI thread (single) | UI updates, StateFlow collection, light work |
-| **IO** | 64+ threads (elastic) | Network, disk, database, file I/O |
-| **Default** | CPU core count | Sorting, parsing, JSON, heavy compute |
+<details>
+<summary><strong>📊 Dispatcher Selection Guide</strong></summary>
+
+```mermaid
+flowchart TD
+    Q{What work?} --> CPU[CPU-heavy<br/>parsing, sorting,<br/>complex computation]
+    Q --> IO[I/O-bound<br/>network, disk,<br/>database]
+    Q --> UI[UI update<br/>StateFlow,<br/>state change]
+    Q --> Short[Short/non-blocking<br/>logging, simple ops]
+    CPU --> Default["🔧 Dispatchers.Default<br/>Thread pool = CPU cores<br/>Shared with I/O"]
+    IO --> IODisp["🌐 Dispatchers.IO<br/>Thread pool = 64+ threads<br/>Elastic, I/O-specific"]
+    UI --> Main["🎨 Dispatchers.Main<br/>UI thread (Looper)<br/>⚠️ Blocks if slow"]
+    Short --> Unconfined["⚠️ Dispatchers.Unconfined<br/>Inherit parent dispatcher<br/>Testing only"]
+```
+
+</details>
+
+| Dispatcher | Thread Pool | Use For | Warning |
+|:-----------|:-----------|:--------|:--------|
+| **Main** | UI thread (single) | UI updates, StateFlow collection, light work | Blocks UI if overloaded |
+| **IO** | 64+ threads (elastic) | Network, disk, database, file I/O | Don't use for CPU work |
+| **Default** | CPU core count | Sorting, parsing, JSON, heavy compute | Shared with IO; use sparingly |
 | **Unconfined** | Caller thread (testing only) | Unit tests with `runTest` |
 
 **Decision tree:**

@@ -4,6 +4,30 @@
 
 ## 1. Data Structures & Big O (The "Under the Hood" Section)
 
+<details open>
+<summary><strong>📊 Data Structure Performance Matrix</strong></summary>
+
+```mermaid
+quadrantChart
+    title Data Structures: Access Speed vs Insert Speed Trade-off
+    x-axis Slow Access --> Fast Access
+    y-axis Slow Insert --> Fast Insert
+    quadrant-1 Fast Both (Best)
+    quadrant-2 Fast Insert, Slow Access
+    quadrant-3 Avoid (Slow Both)
+    quadrant-4 Fast Access, Slow Insert (Most Common)
+    HashMap: [0.9, 0.85]
+    ArrayList: [0.85, 0.2]
+    LinkedList: [0.1, 0.85]
+    TreeMap: [0.6, 0.55]
+    HashSet: [0.9, 0.85]
+    ArrayDeque: [0.75, 0.8]
+```
+
+</details>
+
+---
+
 ### ArrayList vs. LinkedList
 
 |Feature|ArrayList|LinkedList|

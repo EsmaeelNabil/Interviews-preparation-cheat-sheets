@@ -4,6 +4,46 @@
 
 ## 2. Kotlin Language Deep Dive (Start Simple, Go Deeper)
 
+<details open>
+<summary><strong>📦 Kotlin Class Type Hierarchy</strong></summary>
+
+```mermaid
+classDiagram
+    class Any
+    Any <|-- Regular
+    Any <|-- DataClass
+    Any <|-- SealedClass
+    Any <|-- EnumClass
+    Any <|-- InterfaceKt
+    Any <|-- Object
+
+    Regular : +properties
+    Regular : +methods
+    Regular : toString()
+    Regular : equals()
+
+    DataClass : +auto equals()
+    DataClass : +auto hashCode()
+    DataClass : +auto toString()
+    DataClass : +auto copy()
+    DataClass : +auto destructuring
+
+    SealedClass : +exhaustive when
+    SealedClass : +restricts subclasses
+
+    EnumClass : +enumConstants
+    EnumClass : +ordinal
+    EnumClass : +name
+
+    InterfaceKt : +default impl
+    InterfaceKt : +properties with backingField
+
+    Object : +singleton
+    Object : +thread-safe
+```
+
+</details>
+
 ---
 
 ### PART A: Data Classes & Destructuring
